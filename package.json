@@ -1,0 +1,49 @@
+{
+  "name": "svelte-adapter-figma",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sveltejs/kit.git",
+    "directory": "packages/adapter-static"
+  },
+  "license": "MIT",
+  "homepage": "https://kit.svelte.dev",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "platforms.js"
+  ],
+  "devDependencies": {
+    "@types/node": "^16.18.6",
+    "sirv": "^2.0.2",
+    "svelte": "^3.55.1",
+    "typescript": "^4.9.4",
+    "uvu": "^0.5.6",
+    "vite": "^4.0.4",
+    "@sveltejs/kit": "^1.5.3"
+  },
+  "peerDependencies": {
+    "@sveltejs/kit": "^1.5.0"
+  },
+  "scripts": {
+    "lint": "prettier --check . --config ../../.prettierrc --ignore-path .gitignore",
+    "check": "tsc",
+    "format": "pnpm lint --write",
+    "test": "uvu test test.js"
+  },
+  "description": "This is a work in progress adapter to allow Sveltekit to work with Figma plugins and widgets.",
+  "bugs": {
+    "url": "https://github.com/sveltejs/kit/issues"
+  },
+  "main": "index.js",
+  "author": ""
+}
