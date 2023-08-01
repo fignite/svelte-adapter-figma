@@ -23,7 +23,7 @@ export default function (options) {
 			const written_files = builder.writeClient(dest_dir);
 			const prerendered_pages = builder.writePrerendered(dest_dir);
 
-			// console.log(prerendered_pages)
+			console.log(written_files)
 
 			for (const page of prerendered_pages) {
 
@@ -44,17 +44,17 @@ export default function (options) {
 						compress: false,
 						rootpath: dest_dir,
 						ignore: ['png'],
-						// handlers: [function (source, context) {
+						handlers: [function (source, context) {
 
-						// 	if (source.type == 'js') {
-						// 		console.log(source.tag, source.filepath)
-						// 		source.content = "Hey! I'm overriding the file's content!";
-						// 	}
-						// 	else {
+							if (source.type == 'js') {
+								console.log(source.tag, source.filepath)
+								// source.content = "Hey! I'm overriding the file's content!";
+							}
+							else {
 
-						// 	}
-						// 	return Promise.resolve();
-						// }]
+							}
+							return Promise.resolve();
+						}]
 					});
 
 					// FIXME: Does not create the file if the folder does not exist. Needs fixing.
