@@ -36,7 +36,8 @@ export default function (options) {
 				// console.log(path.resolve(dest_dir))
 
 
-				// TODO: Don't know how to get JS to be inlined into html file
+				// TODO: Don't know how to get JS to be inlined into html file. Isn't looping js scripts that use link tag
+
 				try {
 					const html = await inlineSource(htmlpath, {
 						attribute: false,
@@ -44,8 +45,9 @@ export default function (options) {
 						rootpath: dest_dir,
 						ignore: ['png'],
 						// handlers: [function (source, context) {
+
 						// 	if (source.type == 'js') {
-						// 		console.log(source)
+						// 		console.log(source.tag, source.filepath)
 						// 		source.content = "Hey! I'm overriding the file's content!";
 						// 	}
 						// 	else {
