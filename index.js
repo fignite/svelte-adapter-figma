@@ -35,6 +35,8 @@ export default function (options) {
 
 				// console.log(path.resolve(dest_dir))
 
+
+				// TODO: Don't know how to get JS to be inlined into html file
 				try {
 					const html = await inlineSource(htmlpath, {
 						attribute: false,
@@ -52,6 +54,8 @@ export default function (options) {
 						// 	return Promise.resolve();
 						// }]
 					});
+
+					// FIXME: Does not create the file if the folder does not exist. Needs fixing.
 
 					fs.writeFile(tmphtmlpath, html, (err) => {
 						if (err)
