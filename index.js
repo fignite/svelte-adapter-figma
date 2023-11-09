@@ -3,6 +3,10 @@ import fs from 'fs';
 import { platforms } from './platforms.js';
 import { inlineSource } from 'inline-source';
 
+// FIXME: Can't get inline-source to inline js modules that Svelte tries to import
+// TODO: Trouble with current approach is that links to various pages are not handled by Svelte (which would be the case if using single-page app (export const ssr = false;)
+// TODO: Also, when using `export const ssr = false;` svelte doesn't compile it to one html file, it compiles the app to a js file(s) and imports it when the file loads
+
 /** @type {import('.').default} */
 export default function (options) {
 	return {
@@ -23,7 +27,7 @@ export default function (options) {
 			const written_files = builder.writeClient(dest_dir);
 			const prerendered_pages = builder.writePrerendered(dest_dir);
 
-			console.log(written_files)
+			// console.log(written_files)
 
 			for (const page of prerendered_pages) {
 
@@ -60,8 +64,9 @@ export default function (options) {
 					// FIXME: Does not create the file if the folder does not exist. Needs fixing.
 
 					fs.writeFile(tmphtmlpath, html, (err) => {
-						if (err)
+						if (err) {
 							console.log(err);
+						}
 						else {
 							// console.log(fs.readFileSync("books.txt", "utf8"));
 						}
